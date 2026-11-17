@@ -32,6 +32,53 @@ def main():
             'answer': '1776',
             'options': ['1775', '1776', '1823', '1618'],
           },
-        ]
+          { 'question': "What year did the Berlin Wall fall?",
+            'answer': '1989',
+            'options': ['1991', '1989', '2003', '2019'],
+          },
+          { 'question': "Which year did World War 1 start? ",
+            'answer': '1914',
+            'options': ['1917', '1991', '1914', '1910'],
+          },
+          { 'question': "What year did the Space Race start?",
+            'answer': '1955',
+            'options': ['1955', '1990', '1952', '1947'],
+          }
+    ]
 
+    def ask_question(question, options, answer):
+        print("\n" + question)
+
+        letters = ["A", "B", "C", "D"]
+
+        for i in range(len(options)):
+          print(letters[i] + ". " + options[i])
+
+        choice = input("Enter your answer. Choose A, B, C, or D.").strip().upper()
+
+        while choice not in letters:
+           print("That is incorrect. Please choose A, B, C, or D.")
+           choice = input("Enter your answer: ").upper()
+
+        selected_answer = options[letters.index(choice)]
+
+        if selected_answer == answer:
+          print("Correct answer")
+          return True
+        else:
+           print("Incorrect answer")
+           return False
+        
+    for i in range(len(trivia)):
+      correct = ask_question(
+        trivia[i]["question"],
+        trivia[i]["options"],
+        trivia[i]["answer"]
+    )
+
+    if correct == True:
+       score += 1
+
+    print(f"Your final score is {score}/{len(trivia)}")
+       
 main()
