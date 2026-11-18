@@ -54,7 +54,7 @@ def main():
         for i in range(len(options)):
           print(letters[i] + ". " + options[i])
 
-        choice = input("Enter your answer. Choose A, B, C, or D.").strip().upper()
+        choice = input("Enter your answer. Choose A, B, C, or D.").upper()
 
         while choice not in letters:
            print("That is incorrect. Please choose A, B, C, or D.")
@@ -68,17 +68,38 @@ def main():
         else:
            print("Incorrect answer")
            return False
-        
-    for i in range(len(trivia)):
-      correct = ask_question(
-        trivia[i]["question"],
-        trivia[i]["options"],
-        trivia[i]["answer"]
-    )
 
-    if correct == True:
-       score += 1
+    
+    score = 0
+
+    for i in range(len(trivia)):
+        correct = ask_question(
+            trivia[i]["question"],
+            trivia[i]["options"],
+            trivia[i]["answer"]
+        )
+
+        if correct == True:
+            score += 1
 
     print(f"Your final score is {score}/{len(trivia)}")
-       
+
+    def calculate_score(total_questions, num_correct):
+       percentage = (num_correct / total_questions) * 100
+       return percentage
+    
+    final_percentage = calculate_score(len(trivia), score)
+
+    print(f"Your score percentage is {final_percentage}%")
+
+    if final_percentage >= 90:
+       print("Excellent work!")
+    elif final_percentage >= 70:
+       print("Great job!")
+    elif final_percentage >= 60:
+       print("Good try!")
+    else:
+       print("Try again, you can do it!")
+
 main()
+
