@@ -67,12 +67,16 @@ def main():
           return True
         else:
            print("Incorrect answer")
+           print(f"The correct answer is {answer}")
            return False
 
     
     score = 0
+    streak = 0
 
     for i in range(len(trivia)):
+        print(f"Question {i +1} of {len(trivia)}")
+        
         correct = ask_question(
             trivia[i]["question"],
             trivia[i]["options"],
@@ -81,6 +85,12 @@ def main():
 
         if correct == True:
             score += 1
+            streak += 1
+
+            if streak == 3:
+             print("You are on fire!🔥")
+        else:
+               streak = 0
 
     print(f"Your final score is {score}/{len(trivia)}")
 
@@ -100,6 +110,17 @@ def main():
        print("Good try!")
     else:
        print("Try again, you can do it!")
+
+    if final_percentage == 100:
+       print("You are the legend of history!")
+    elif final_percentage >= 80:
+       print("You are the history master!")
+    elif final_percentage >= 60:
+       print("You have some awesome history facts! You are a history explorer.")
+    else:
+       print("You are a history beginner! If you score higher, you can level up.")
+
+    print("Thank you so much for playing. I hope you had fun!")
 
 main()
 
