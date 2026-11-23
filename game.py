@@ -54,11 +54,13 @@ def main():
         for i in range(len(options)):
           print(letters[i] + ". " + options[i])
 
-        choice = input("Enter your answer. Choose A, B, C, or D.").upper()
+        choice = input("Enter your answer. Choose A, B, C, or D.")
+        choice = choice.upper()
 
         while choice not in letters:
            print("That is incorrect. Please choose A, B, C, or D.")
-           choice = input("Enter your answer: ").upper()
+           choice = input("Enter your answer: ")
+           choice = choice.upper()
 
         selected_answer = options[letters.index(choice)]
 
